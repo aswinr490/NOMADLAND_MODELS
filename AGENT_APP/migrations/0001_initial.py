@@ -79,7 +79,7 @@ class Migration(migrations.Migration):
             name='PackageImagesModel',
             fields=[
                 ('image_id', models.AutoField(primary_key=True, serialize=False)),
-                ('image', models.ImageField(upload_to='images')),
+                ('image', models.ImageField(upload_to='media')),
                 ('package_id', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='AGENT_APP.packagemodel')),
             ],
             options={
@@ -103,7 +103,7 @@ class Migration(migrations.Migration):
             name='HotelImage',
             fields=[
                 ('hotel_image_id', models.AutoField(primary_key=True, serialize=False)),
-                ('hotel_image', models.ImageField(upload_to='images')),
+                ('hotel_image', models.ImageField(upload_to='media')),
                 ('hotel_id', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='AGENT_APP.hotelmodel')),
             ],
             options={

@@ -230,7 +230,7 @@ def update_package_details(request, package_id):
         package_obj.description = description
         package_obj.save()
 
-        # Save or update package images
+        # Save or update package media
         for image in package_images:
             PackageImagesModel.objects.create(
                 package_id=package_obj,

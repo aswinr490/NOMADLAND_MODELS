@@ -153,7 +153,7 @@ def offer(request):
     packages_offers = []
     for package in PackageModel.objects.filter(offers__in=active_offers).distinct():
         package_images = PackageImagesModel.objects.filter(package_id=package)
-        packages_offers.append({'package': package, 'images': package_images})
+        packages_offers.append({'package': package, 'media': package_images})
 
     context = {
         'packages_offers': packages_offers

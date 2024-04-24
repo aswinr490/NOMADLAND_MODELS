@@ -214,7 +214,7 @@
 {% for hotel in hotels %}
 <div class="col-lg-4 mb-4">
     <div class="card">
-        <!-- Carousel for hotel images -->
+        <!-- Carousel for hotel media -->
         <div id="carouselHotel{{ hotel.hotel_id }}" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
                 {% for image in hotel.hotelimage_set.all %}

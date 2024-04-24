@@ -17,7 +17,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='activitiesmodel',
             name='activity_images',
-            field=models.ImageField(null=True, upload_to='images/'),
+            field=models.ImageField(null=True, upload_to='media/'),
         ),
         migrations.AlterField(
             model_name='activitiesmodel',

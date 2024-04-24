@@ -105,7 +105,7 @@ class PackageSplit(models.Model):
 
 class PackageImagesModel(models.Model):
     """
-    Model representing images associated with a package.
+    Model representing media associated with a package.
 
     Attributes:
         image_id (AutoField): The unique identifier for the image.
@@ -113,8 +113,8 @@ class PackageImagesModel(models.Model):
         package_id (ForeignKey): The package associated with this image.
     """
     image_id = models.AutoField(primary_key=True)
-    image = models.ImageField(upload_to='images')
-    package_id = models.ForeignKey(PackageModel, related_name='images', on_delete=models.CASCADE)
+    image = models.ImageField(upload_to='media')
+    package_id = models.ForeignKey(PackageModel, related_name='media', on_delete=models.CASCADE)
 
     class Meta:
         db_table = 'package_images'
@@ -162,7 +162,7 @@ class HotelModel(models.Model):
 
 class HotelImage(models.Model):
     """
-    Model representing images associated with a hotel.
+    Model representing media associated with a hotel.
 
     Attributes:
         hotel_image_id (AutoField): The unique identifier for the hotel image.
@@ -171,7 +171,7 @@ class HotelImage(models.Model):
     """
     hotel_image_id = models.AutoField(primary_key=True)
     hotel_id = models.ForeignKey(HotelModel, on_delete=models.CASCADE)
-    hotel_image = models.ImageField(upload_to='images',null=True)
+    hotel_image = models.ImageField(upload_to='media',null=True)
 
     class Meta:
         db_table = 'hotel_image'
@@ -210,7 +210,7 @@ class ActivitiesModel(models.Model):
     """
     activities_id = models.AutoField(primary_key=True)
     activities = models.CharField(max_length=255, null=True)
-    activity_images = models.ImageField(upload_to='images/', null=True)
+    activity_images = models.ImageField(upload_to='media/', null=True)
     activity_description = models.CharField(max_length=255, null=True)
     package_id = models.ForeignKey(PackageModel, on_delete=models.CASCADE)
 
