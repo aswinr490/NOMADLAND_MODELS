@@ -1,5 +1,7 @@
 from django.shortcuts import render,  reverse, redirect
 from django.http import HttpResponseBadRequest
+
+from ADMIN_APP.views import add_notification
 from AGENT_APP.models import *
 from USER_APP.models import *
 from django.shortcuts import get_object_or_404
@@ -69,6 +71,8 @@ def manage_package(request):
     }
 
     if request.method == 'POST':
+
+        add_notification("New package added")
 
         nation_name = request.POST.get('nation_name')
 
