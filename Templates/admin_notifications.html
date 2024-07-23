@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notifications</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            margin-top: 50px;
+        }
+        .notification {
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        .notification p {
+            margin: 0;
+            font-size: 16px;
+            color: #333;
+        }
+        .notification small {
+            font-size: 12px;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Notifications</h2>
+    <div id="notificationArea">
+        <!-- Django template for displaying notifications -->
+        {% for notification in notifications %}
+        <div class="notification">
+            <p>{{ notification.message }}</p>
+            <small>{{ notification.timestamp }}</small>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<script>
+    // This script block remains unchanged as it handles notification functionality
+    var notifications = []; // Initialize empty array for notifications
+
+    // Function to display notifications dynamically
+    function showNotifications() {
+        var notificationArea = document.getElementById('notificationArea');
+        notificationArea.innerHTML = ''; // Clear existing notifications
+        notifications.forEach(function(notification) {
+            var notificationDiv = document.createElement('div');
+            notificationDiv.classList.add('notification');
+            var messageParagraph = document.createElement('p');
+            messageParagraph.textContent = notification.message;
+            var timestampSmall = document.createElement('small');
+            timestampSmall.textContent = notification.timestamp;
+            notificationDiv.appendChild(messageParagraph);
+            notificationDiv.appendChild(timestampSmall);
+            notificationArea.appendChild(notificationDiv);
+        });
+    }
+
+    // Simulate new notification arrival (for testing purposes)
+    function addNotification(message) {
+        var timestamp = new Date().toLocaleString();
+        notifications.unshift({ message: message, timestamp: timestamp }); // Add new notification to the beginning of the array
+        showNotifications(); // Update notifications display
+    }
+
+    // Example: Simulating actions and generating notifications
+    // These should be triggered when an action occurs in your application
+    setTimeout(function() {
+        addNotification("New package added");
+    }, 2000);
+
+    setTimeout(function() {
+        addNotification("Package removed");
+    }, 4000);
+
+    setTimeout(function() {
+        addNotification("Booking confirmed");
+    }, 6000);
+
+</script>
+
+</body>
+</html>
